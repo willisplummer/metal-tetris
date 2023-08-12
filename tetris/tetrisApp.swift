@@ -12,6 +12,7 @@ struct tetrisApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+            .environmentObject(GameStateStore(initial: GameState(), reducer: gameReducer))
         }
     }
 }

@@ -11,6 +11,16 @@
 		379D0C4F2A8534D300DD1378 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379D0C4E2A8534D300DD1378 /* ContentView.swift */; };
 		379D0C512A8534D400DD1378 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 379D0C502A8534D400DD1378 /* Assets.xcassets */; };
 		379D0C552A8534D400DD1378 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 379D0C542A8534D400DD1378 /* Preview Assets.xcassets */; };
+		379D0C5D2A85351700DD1378 /* MetalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379D0C5C2A85351700DD1378 /* MetalView.swift */; };
+		379D0C602A85354700DD1378 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379D0C5F2A85354700DD1378 /* Store.swift */; };
+		379D0C622A85358300DD1378 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379D0C612A85358300DD1378 /* GameState.swift */; };
+		379D0C642A8535B400DD1378 /* InputController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379D0C632A8535B400DD1378 /* InputController.swift */; };
+		379D0C672A8535FB00DD1378 /* MathLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379D0C662A8535FB00DD1378 /* MathLibrary.swift */; };
+		379D0C6A2A85365E00DD1378 /* Renderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379D0C692A85365E00DD1378 /* Renderer.swift */; };
+		379D0C6C2A85367A00DD1378 /* VertexDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379D0C6B2A85367A00DD1378 /* VertexDescriptor.swift */; };
+		379D0C6E2A85369A00DD1378 /* Quad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379D0C6D2A85369A00DD1378 /* Quad.swift */; };
+		379D0C702A8536C600DD1378 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379D0C6F2A8536C600DD1378 /* GameScene.swift */; };
+		379D0C722A857A6D00DD1378 /* Metal.metal in Sources */ = {isa = PBXBuildFile; fileRef = 379D0C712A857A6D00DD1378 /* Metal.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +30,16 @@
 		379D0C502A8534D400DD1378 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		379D0C522A8534D400DD1378 /* tetris.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = tetris.entitlements; sourceTree = "<group>"; };
 		379D0C542A8534D400DD1378 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		379D0C5C2A85351700DD1378 /* MetalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalView.swift; sourceTree = "<group>"; };
+		379D0C5F2A85354700DD1378 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		379D0C612A85358300DD1378 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
+		379D0C632A8535B400DD1378 /* InputController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputController.swift; sourceTree = "<group>"; };
+		379D0C662A8535FB00DD1378 /* MathLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathLibrary.swift; sourceTree = "<group>"; };
+		379D0C692A85365E00DD1378 /* Renderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Renderer.swift; sourceTree = "<group>"; };
+		379D0C6B2A85367A00DD1378 /* VertexDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VertexDescriptor.swift; sourceTree = "<group>"; };
+		379D0C6D2A85369A00DD1378 /* Quad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quad.swift; sourceTree = "<group>"; };
+		379D0C6F2A8536C600DD1378 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		379D0C712A857A6D00DD1378 /* Metal.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Metal.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +73,11 @@
 			isa = PBXGroup;
 			children = (
 				379D0C4C2A8534D300DD1378 /* tetrisApp.swift */,
-				379D0C4E2A8534D300DD1378 /* ContentView.swift */,
+				379D0C5B2A8534ED00DD1378 /* SwiftUI Views */,
+				379D0C5E2A85352600DD1378 /* State */,
+				379D0C652A8535EC00DD1378 /* Utility */,
+				379D0C682A85364C00DD1378 /* Graphics */,
+				379D0C6F2A8536C600DD1378 /* GameScene.swift */,
 				379D0C502A8534D400DD1378 /* Assets.xcassets */,
 				379D0C522A8534D400DD1378 /* tetris.entitlements */,
 				379D0C532A8534D400DD1378 /* Preview Content */,
@@ -67,6 +91,44 @@
 				379D0C542A8534D400DD1378 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		379D0C5B2A8534ED00DD1378 /* SwiftUI Views */ = {
+			isa = PBXGroup;
+			children = (
+				379D0C4E2A8534D300DD1378 /* ContentView.swift */,
+				379D0C5C2A85351700DD1378 /* MetalView.swift */,
+			);
+			path = "SwiftUI Views";
+			sourceTree = "<group>";
+		};
+		379D0C5E2A85352600DD1378 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				379D0C5F2A85354700DD1378 /* Store.swift */,
+				379D0C612A85358300DD1378 /* GameState.swift */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		379D0C652A8535EC00DD1378 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				379D0C632A8535B400DD1378 /* InputController.swift */,
+				379D0C662A8535FB00DD1378 /* MathLibrary.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		379D0C682A85364C00DD1378 /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				379D0C692A85365E00DD1378 /* Renderer.swift */,
+				379D0C6B2A85367A00DD1378 /* VertexDescriptor.swift */,
+				379D0C6D2A85369A00DD1378 /* Quad.swift */,
+				379D0C712A857A6D00DD1378 /* Metal.metal */,
+			);
+			path = Graphics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +201,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				379D0C6A2A85365E00DD1378 /* Renderer.swift in Sources */,
+				379D0C642A8535B400DD1378 /* InputController.swift in Sources */,
+				379D0C6E2A85369A00DD1378 /* Quad.swift in Sources */,
+				379D0C5D2A85351700DD1378 /* MetalView.swift in Sources */,
+				379D0C6C2A85367A00DD1378 /* VertexDescriptor.swift in Sources */,
+				379D0C702A8536C600DD1378 /* GameScene.swift in Sources */,
+				379D0C602A85354700DD1378 /* Store.swift in Sources */,
+				379D0C722A857A6D00DD1378 /* Metal.metal in Sources */,
+				379D0C672A8535FB00DD1378 /* MathLibrary.swift in Sources */,
+				379D0C622A85358300DD1378 /* GameState.swift in Sources */,
 				379D0C4F2A8534D300DD1378 /* ContentView.swift in Sources */,
 				379D0C4D2A8534D300DD1378 /* tetrisApp.swift in Sources */,
 			);
