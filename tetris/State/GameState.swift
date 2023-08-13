@@ -135,7 +135,7 @@ struct GameState {
   var velocity: Float
   var timeSinceLastMove: Float
 
-  var score: Int32
+  var score: Int
   var gameOver: Bool
 
   init() {
@@ -183,7 +183,23 @@ func gameReducer(state: GameState, action: GameAction) -> GameState {
       newState.activeBlocks = targetUpdate
     } else {
       newState.lockedBlocks = newState.lockedBlocks + newState.activeBlocks
-      // TODO: clear full rows of locked blocks, lower all rows above it
+      
+      // check all rows where newState activeBlocks have become active
+      let changedRows = Array(Set(newState.activeBlocks.map{ $0.y }))
+      let filledRows = changedRows.filter{ y in
+        let rowSize = newState.lockedBlocks.filter{ $0.y == y }.count
+        return rowSize >= 20
+      }
+      
+      let clearedAndMovedDown = newState.lockedBlocks
+          .filter{ !filledRows.contains($0.y) }
+          .map{ block in
+            let filledRowsBelowBlock = filledRows.filter{ $0 < block.y }
+            return block.translate(float2(0, -1 * Float(filledRowsBelowBlock.count)))
+          }
+      newState.lockedBlocks = clearedAndMovedDown
+      newState.score += filledRows.count
+      newState.velocity += 0.1 * Float(filledRows.count)
 
       if (newState.lockedBlocks.contains{f2 in
         f2.y > 9
@@ -199,11 +215,13 @@ func gameReducer(state: GameState, action: GameAction) -> GameState {
       newState.activeBlocks = targetUpdate
       return newState
     }
-      return newState
+    return newState
   case .next:
-    let activeBlocksFinalPos = getFinalPosition(activeBlocks: newState.activeBlocks, lockedBlocks: newState.lockedBlocks)
-    newState.lockedBlocks = newState.lockedBlocks + activeBlocksFinalPos
-    newState.activeBlocks = Shape.allCases.randomElement()!.initialBlocks()
+    // just move the block to the bottom and then let tick handle it
+    // one weird edge case with this approach is you can still move side to side until the next tick
+    // ideally we'd dispatch tick from here with a delta time of 1
+    // but I don't have the ability to dispatch from the reducer yet
+    newState.activeBlocks = getFinalPosition(activeBlocks: newState.activeBlocks, lockedBlocks: newState.lockedBlocks)
     return newState
   }
   return newState
