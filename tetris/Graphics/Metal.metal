@@ -23,7 +23,7 @@ vertex VertexOut vertex_main(
   constant float2 &target_point [[buffer(11)]],
   constant float4 &color [[buffer(12)]]
 ) {
-  float4 position = float4(in.position.x + target_point.x, in.position.y + target_point.y, 0, 10);
+  float4 position = float4((in.position.x + target_point.x) * 2, in.position.y + target_point.y, 0, 10);
   VertexOut out {
     .position = position,
     .color = color

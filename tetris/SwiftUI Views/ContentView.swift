@@ -7,7 +7,11 @@
 
 import SwiftUI
 
-let size: CGFloat = 400
+let height: CGFloat = 400
+let width: CGFloat = 200
+// squares are 10*10, board is 10 wide by 20 high
+// TODO: don't just hardcode this stuff
+
 struct ContentView: View {
   @EnvironmentObject var store: GameStateStore
 //  let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -19,7 +23,7 @@ struct ContentView: View {
           .border(Color.black, width: 2)
         Grid()
       }
-        .frame(width: size, height: size)
+        .frame(width: width, height: height)
       Text("Score: \(store.state.score)")
       store.state.gameOver ? AnyView(Text("Game Over - Press enter to restart")) : AnyView(EmptyView())
     }
@@ -28,17 +32,16 @@ struct ContentView: View {
 }
 
 struct Grid: View {
-  var cellSize: CGFloat = size / 20
   var body: some View {
     ZStack {
       HStack {
-        ForEach(0..<Int(cellSize)) { _ in
+        ForEach(0..<Int(10)) { _ in
           Spacer()
           Divider()
         }
       }
       VStack {
-        ForEach(0..<Int(cellSize)) { _ in
+        ForEach(0..<Int(20)) { _ in
           Spacer()
           Divider()
         }
@@ -66,6 +69,7 @@ struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
     Group {
       ContentView()
+        .environmentObject(GameStateStore(initial: GameState(), reducer: gameReducer))
     }
   }
 }

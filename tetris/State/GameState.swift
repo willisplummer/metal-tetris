@@ -188,7 +188,7 @@ func gameReducer(state: GameState, action: GameAction) -> GameState {
       let changedRows = Array(Set(newState.activeBlocks.map{ $0.y }))
       let filledRows = changedRows.filter{ y in
         let rowSize = newState.lockedBlocks.filter{ $0.y == y }.count
-        return rowSize >= 20
+        return rowSize >= 10
       }
       
       let clearedAndMovedDown = newState.lockedBlocks
@@ -252,7 +252,7 @@ func rotate(activeBlocks: [Block]) -> [Block] {
 func canMoveTo(_ targetPosition: [float2], lockedBlocks: [Block]) -> Bool {
   return !targetPosition.contains{pos in
     posOverlapsLockedBlocks(targetPos: pos, lockedBlocks: lockedBlocks)
-    || pos.x < -10 || pos.x > 9 || pos.y < -10
+    || pos.x < -5 || pos.x > 4 || pos.y < -10
   }
 }
 
