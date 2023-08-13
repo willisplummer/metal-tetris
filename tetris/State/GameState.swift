@@ -99,6 +99,26 @@ enum  Shape: CaseIterable {
   }
 }
 
+extension [Block] {
+  func position() -> [float2] {
+    map{ $0.position }
+  }
+}
+//
+//enum Rotation {
+//  case one, two, three, four
+//}
+//
+//struct Shape {
+//  let shapeType: ShapeType
+//  var blockPositions: [Block]
+//
+//  init(shapeType: ShapeType) {
+//    self.shapeType = shapeType
+//    self.blockPositions = shapeType.initialBlocks()
+//  }
+//}
+
 enum GameAction: Equatable {
   case move(Direction)
   case rotate
@@ -108,6 +128,7 @@ enum GameAction: Equatable {
 }
 
 struct GameState {
+//  var activeShape: Shape
   var activeBlocks: [Block]
   var lockedBlocks: [Block]
 
@@ -141,7 +162,7 @@ func gameReducer(state: GameState, action: GameAction) -> GameState {
     
   case .move(let dir):
     let targetUpdate = applyMove(activeBlocks: state.activeBlocks, vector: dir.vector())
-    if canMoveTo(targetUpdate.map{block in block.position}, lockedBlocks: state.lockedBlocks){
+    if canMoveTo(targetUpdate.position(), lockedBlocks: state.lockedBlocks){
       newState.activeBlocks = targetUpdate
     }
 
@@ -158,7 +179,7 @@ func gameReducer(state: GameState, action: GameAction) -> GameState {
     newState.timeSinceLastMove = 0
 
     let targetUpdate = applyMove(activeBlocks: state.activeBlocks, vector: Direction.down.vector())
-    if canMoveTo(targetUpdate.map{block in block.position}, lockedBlocks: state.lockedBlocks){
+    if canMoveTo(targetUpdate.position(), lockedBlocks: state.lockedBlocks){
       newState.activeBlocks = targetUpdate
     } else {
       newState.lockedBlocks = newState.lockedBlocks + newState.activeBlocks
@@ -173,7 +194,11 @@ func gameReducer(state: GameState, action: GameAction) -> GameState {
       }
     }
   case .rotate:
-  //    TODO: implement rotate
+    let targetUpdate = rotate(activeBlocks: newState.activeBlocks)
+    if (canMoveTo(targetUpdate.position(), lockedBlocks: newState.lockedBlocks)) {
+      newState.activeBlocks = targetUpdate
+      return newState
+    }
       return newState
   case .next:
     let activeBlocksFinalPos = getFinalPosition(activeBlocks: newState.activeBlocks, lockedBlocks: newState.lockedBlocks)
@@ -196,6 +221,16 @@ func posOverlapsLockedBlocks(targetPos: float2, lockedBlocks: [Block]) -> Bool {
   }
 }
 
+func rotate(activeBlocks: [Block]) -> [Block] {
+  let firstBlock = activeBlocks[0]
+  // translate first block to origin
+  let translatedBlocks: [Block] = activeBlocks.map({ $0.translate(float2(-(firstBlock.x), -(firstBlock.y))) })
+  // rotate them around the origin
+  let rotatedBlocks: [Block] = translatedBlocks.map({ Block(position: float2(-$0.y, $0.x), color: $0.color) })
+  // undo the translation to origin
+  return rotatedBlocks.map{ $0.translate(firstBlock.position) }
+}
+
 func canMoveTo(_ targetPosition: [float2], lockedBlocks: [Block]) -> Bool {
   return !targetPosition.contains{pos in
     posOverlapsLockedBlocks(targetPos: pos, lockedBlocks: lockedBlocks)
@@ -207,7 +242,7 @@ func canMoveTo(_ targetPosition: [float2], lockedBlocks: [Block]) -> Bool {
 func getFinalPosition(activeBlocks: [Block], lockedBlocks: [Block]) -> [Block] {
   let targetUpdate = applyMove(activeBlocks: activeBlocks, vector: Direction.down.vector())
 
-  if !canMoveTo(targetUpdate.map{ block in block.position }, lockedBlocks: lockedBlocks){
+  if !canMoveTo(targetUpdate.position(), lockedBlocks: lockedBlocks){
     return activeBlocks
   }
 
