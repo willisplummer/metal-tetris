@@ -37,7 +37,7 @@ class Renderer: NSObject {
     metalView.device = device
 
     self.materialLoader = MTKTextureLoader(device: device)
-    material = Material(allocator: materialLoader, filename: "stock-vector-pixel-art-water-texture-pattern-for-game-platforms-vector-illustration-bit-sprite-1474789262")
+    material = Material(allocator: materialLoader, filename: "pixil-frame-0")
 
     // create the shader function library
     let library = device.makeDefaultLibrary()

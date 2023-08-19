@@ -11,7 +11,7 @@ class Material {
   let texture: MTLTexture
 
   init(allocator: MTKTextureLoader, filename: String) {
-    guard let materialURL = Bundle.main.url(forResource: filename, withExtension: "jpg") else {
+    guard let materialURL = Bundle.main.url(forResource: filename, withExtension: "png") else {
       fatalError()
     }
 

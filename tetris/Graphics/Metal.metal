@@ -15,6 +15,7 @@ struct VertexIn {
 
 struct VertexOut {
   float4 position [[position]];
+  float2 ogPos;
   float4 color;
 };
 
@@ -28,7 +29,8 @@ vertex VertexOut vertex_main(
   float4 position = float4((in.position.x + target_point.x) * 0.05 * 2, (in.position.y + target_point.y) * 0.1, 0, 1);
   VertexOut out {
     .position = position,
-    .color = color
+    .color = color,
+    .ogPos = float2(in.position.x, in.position.y)
   };
   return out;
 }
@@ -50,11 +52,9 @@ fragment float4 fragment_main(
 
 //  I need to transform the position from 2x2 coord grid with center at 0,0 to 1x1 with center at top left
 // so translate y + 1, x+ 1 scale by 1/2
-  float3 baseColor = baseColorTexture.sample( textureSampler,
-                                              float2((in.position.x + 1) * 0.5,
-                                                     (in.position.y - 1) * -0.5)
-                                             ).rgb;
+  float2 ogPosTransformed = float2(in.ogPos.x, in.ogPos.y);
+  float4 color = baseColorTexture.sample(textureSampler, ogPosTransformed);
 
-  return float4(baseColor, 1);
+  return color;
 }
 
