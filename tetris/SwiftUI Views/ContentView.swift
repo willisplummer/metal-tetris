@@ -8,13 +8,10 @@
 import SwiftUI
 
 let height: CGFloat = 400
-let width: CGFloat = 200
-// squares are 10*10, board is 10 wide by 20 high
-// TODO: don't just hardcode this stuff
+let width: CGFloat = 400
 
 struct ContentView: View {
   @EnvironmentObject var store: GameStateStore
-//  let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
   var body: some View {
     VStack(alignment: .leading) {

@@ -13,6 +13,9 @@ class Renderer: NSObject {
   static var device: MTLDevice!
   static var commandQueue: MTLCommandQueue!
   static var library: MTLLibrary!
+
+  let materialLoader: MTKTextureLoader
+
   var store: GameStateStore
   var pipelineState: MTLRenderPipelineState!
   var lastTime: Double = CFAbsoluteTimeGetCurrent()
@@ -21,6 +24,7 @@ class Renderer: NSObject {
   lazy var quad: Quad = {
     Quad(device: Renderer.device)
   }()
+  let material: Material
 
   init(metalView: MTKView, store: GameStateStore) {
     guard
@@ -31,6 +35,9 @@ class Renderer: NSObject {
     Renderer.device = device
     Renderer.commandQueue = commandQueue
     metalView.device = device
+
+    self.materialLoader = MTKTextureLoader(device: device)
+    material = Material(allocator: materialLoader, filename: "stock-vector-pixel-art-water-texture-pattern-for-game-platforms-vector-illustration-bit-sprite-1474789262")
 
     // create the shader function library
     let library = device.makeDefaultLibrary()
@@ -76,14 +83,16 @@ extension Renderer: MTKViewDelegate {
     drawableSizeWillChange size: CGSize
   ) {}
   
-  func renderSquare(position: float2, color: float4, encoder: MTLRenderCommandEncoder) {
+  func renderSquare(position: float2, color: float4, encoder: MTLRenderCommandEncoder, material: Material) {
     // define the basic set of vertices and indices for a square + tell the graphics engine to render that
     encoder.setVertexBuffer(
       quad.vertexBuffer,
       offset: 0,
-      index: 0)
-
-    // i just pass the desired pos on 10x10 grid to the gpu and have it translate the square
+      index: 0
+    )
+    encoder.setFragmentTexture(material.texture, index: 0)
+    // we currently make assumptions about the size of the metal view (perfect square, which I guess we can't enforce on iphone type devices) -- I think we can let it be 100%, listen for it to change and then calculate translations that will make sense no matter the size of the view
+    // i just pass the desired pos on 10x20 grid to the gpu and have it scale and translate the square (pos representing bottom left corner of the 1x1 square
     encoder.setVertexBytes(
       [position.x, position.y],
       length: MemoryLayout<Float>.stride * 2,
@@ -106,7 +115,7 @@ extension Renderer: MTKViewDelegate {
     encoder.setRenderPipelineState(pipelineState)
 
     (store.state.lockedBlocks + store.state.activeBlocks).forEach({ block in
-      renderSquare(position: block.position, color: block.color, encoder: encoder)
+      renderSquare(position: block.position, color: block.color, encoder: encoder, material: material)
     })
   }
 

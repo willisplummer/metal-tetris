@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		378515302A907F2E007C0F20 /* pixil-frame-0.png in Resources */ = {isa = PBXBuildFile; fileRef = 3785152F2A907F2E007C0F20 /* pixil-frame-0.png */; };
+		378515322A907F51007C0F20 /* Material.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378515312A907F51007C0F20 /* Material.swift */; };
 		379D0C4D2A8534D300DD1378 /* tetrisApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379D0C4C2A8534D300DD1378 /* tetrisApp.swift */; };
 		379D0C4F2A8534D300DD1378 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379D0C4E2A8534D300DD1378 /* ContentView.swift */; };
 		379D0C512A8534D400DD1378 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 379D0C502A8534D400DD1378 /* Assets.xcassets */; };
@@ -21,9 +23,12 @@
 		379D0C6E2A85369A00DD1378 /* Quad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379D0C6D2A85369A00DD1378 /* Quad.swift */; };
 		379D0C702A8536C600DD1378 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379D0C6F2A8536C600DD1378 /* GameScene.swift */; };
 		379D0C722A857A6D00DD1378 /* Metal.metal in Sources */ = {isa = PBXBuildFile; fileRef = 379D0C712A857A6D00DD1378 /* Metal.metal */; };
+		37EF2BDC2A9165CF00BFD15A /* stock-vector-pixel-art-water-texture-pattern-for-game-platforms-vector-illustration-bit-sprite-1474789262.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 37EF2BDB2A9165CF00BFD15A /* stock-vector-pixel-art-water-texture-pattern-for-game-platforms-vector-illustration-bit-sprite-1474789262.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3785152F2A907F2E007C0F20 /* pixil-frame-0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pixil-frame-0.png"; sourceTree = "<group>"; };
+		378515312A907F51007C0F20 /* Material.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Material.swift; sourceTree = "<group>"; };
 		379D0C492A8534D300DD1378 /* tetris.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tetris.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		379D0C4C2A8534D300DD1378 /* tetrisApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tetrisApp.swift; sourceTree = "<group>"; };
 		379D0C4E2A8534D300DD1378 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -40,6 +45,7 @@
 		379D0C6D2A85369A00DD1378 /* Quad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quad.swift; sourceTree = "<group>"; };
 		379D0C6F2A8536C600DD1378 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		379D0C712A857A6D00DD1378 /* Metal.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Metal.metal; sourceTree = "<group>"; };
+		37EF2BDB2A9165CF00BFD15A /* stock-vector-pixel-art-water-texture-pattern-for-game-platforms-vector-illustration-bit-sprite-1474789262.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "stock-vector-pixel-art-water-texture-pattern-for-game-platforms-vector-illustration-bit-sprite-1474789262.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +86,8 @@
 				379D0C6F2A8536C600DD1378 /* GameScene.swift */,
 				379D0C502A8534D400DD1378 /* Assets.xcassets */,
 				379D0C522A8534D400DD1378 /* tetris.entitlements */,
+				3785152F2A907F2E007C0F20 /* pixil-frame-0.png */,
+				37EF2BDB2A9165CF00BFD15A /* stock-vector-pixel-art-water-texture-pattern-for-game-platforms-vector-illustration-bit-sprite-1474789262.jpg */,
 				379D0C532A8534D400DD1378 /* Preview Content */,
 			);
 			path = tetris;
@@ -127,6 +135,7 @@
 				379D0C6B2A85367A00DD1378 /* VertexDescriptor.swift */,
 				379D0C6D2A85369A00DD1378 /* Quad.swift */,
 				379D0C712A857A6D00DD1378 /* Metal.metal */,
+				378515312A907F51007C0F20 /* Material.swift */,
 			);
 			path = Graphics;
 			sourceTree = "<group>";
@@ -190,7 +199,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				379D0C552A8534D400DD1378 /* Preview Assets.xcassets in Resources */,
+				378515302A907F2E007C0F20 /* pixil-frame-0.png in Resources */,
 				379D0C512A8534D400DD1378 /* Assets.xcassets in Resources */,
+				37EF2BDC2A9165CF00BFD15A /* stock-vector-pixel-art-water-texture-pattern-for-game-platforms-vector-illustration-bit-sprite-1474789262.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,6 +212,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				378515322A907F51007C0F20 /* Material.swift in Sources */,
 				379D0C6A2A85365E00DD1378 /* Renderer.swift in Sources */,
 				379D0C642A8535B400DD1378 /* InputController.swift in Sources */,
 				379D0C6E2A85369A00DD1378 /* Quad.swift in Sources */,
